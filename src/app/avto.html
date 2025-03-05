@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .login-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background: #2575fc;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background: #6a11cb;
+        }
+
+        .login-container .links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .login-container .links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .login-container .links a:hover {
+            color: #2575fc;
+        }
+
+        .login-container .social-login {
+            margin-top: 20px;
+        }
+
+        .login-container .social-login button {
+            width: 48%;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-container .social-login button.google {
+            background: #db4437;
+            color: #fff;
+        }
+
+        .login-container .social-login button.facebook {
+            background: #4267B2;
+            color: #fff;
+        }
+
+        .login-container .social-login button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Авторизация</h2>
+        <form>
+            <input type="text" placeholder="Имя пользователя" required>
+            <input type="password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+        <div class="links">
+            <a href="#">Забыли пароль?</a>
+            <a href="#">Регистрация</a>
+        </div>
+        <div class="social-login">
+            <button class="google">Войти через Google</button>
+            <button class="facebook">Войти через Facebook</button>
+        </div>
+    </div>
+</body>
+</html>

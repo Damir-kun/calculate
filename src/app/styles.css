@@ -1,0 +1,284 @@
+/* Основные стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Градиентный фон */
+    color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Контейнер меню */
+.menu-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* Размытие фона */
+}
+
+/* Заголовок */
+.menu-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Список меню */
+.menu-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Элементы меню */
+.menu-container ul li {
+    margin: 20px 0;
+}
+
+/* Ссылки */
+.menu-container ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Эффекты при наведении на ссылки */
+.menu-container ul li a:hover {
+    background: white;
+    color: #1e3c72;
+    transform: translateY(-5px); /* Поднимаем кнопку */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Анимация для заголовка */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-container h1 {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Анимация для ссылок */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.menu-container ul li {
+    animation: slideIn 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+.menu-container ul li:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.menu-container ul li:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.menu-container ul li:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.menu-container ul li:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.menu-container ul li:nth-child(5) {
+    animation-delay: 1s;
+}
+/* Основные стили */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    display: flex;
+    flex-direction: column; /* Колонка для вертикального расположения */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Контейнер меню */
+.menu-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    margin-bottom: 40px; /* Отступ снизу */
+}
+
+/* Заголовок */
+.menu-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Список меню */
+.menu-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Элементы меню */
+.menu-container ul li {
+    margin: 20px 0;
+}
+
+/* Ссылки */
+.menu-container ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Эффекты при наведении на ссылки */
+.menu-container ul li a:hover {
+    background: white;
+    color: #1e3c72;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Раздел "О нас" */
+.about-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    margin: 20px;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Анимация для раздела "О нас" */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-section {
+    animation: fadeInUp 1s ease-out;
+}
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Контейнер для вкладок */
+.tabs-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Кнопки вкладок */
+.tab-buttons {
+    display: flex;
+    background: #2c3e50;
+}
+
+.tablink {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tablink:hover {
+    background: #34495e;
+}
+
+.tablink.active {
+    background: #1abc9c;
+}
+
+/* Содержимое вкладок */
+.tabcontent {
+    display: none;
+    padding: 20px;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+/* Заголовок и текст внутри вкладок */
+.tabcontent h2 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.tabcontent p {
+    color: #555;
+    line-height: 1.6;
+}
