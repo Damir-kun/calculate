@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькуляторы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .tabs-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 90%;
+            max-width: 600px;
+            color: black;
+        }
+
+        .tab-buttons {
+            display: flex;
+            background: #34495e;
+        }
+
+        .tablink {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .tablink:hover {
+            background: #1abc9c;
+        }
+
+        .tablink.active {
+            background: #16a085;
+        }
+
+        .tabcontent {
+            display: none;
+            padding: 20px;
+        }
+
+        .tabcontent.active {
+            display: block;
+        }
+
+        .calculator {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1abc9c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #16a085;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Что будем считать сегодня?</h1>
+    </div>
+    <div class="tabs-container">
+        <div class="tab-buttons">
+            <button class="tablink active" data-tab="tab1">Расчёт каркаса</button>
+            <button class="tablink" data-tab="tab2">Расчёт фундамента</button>
+            <button class="tablink" data-tab="tab3">Расчёт стоимости элементов</button>
+        </div>
+
+        <div id="tab1" class="tabcontent active">
+            <div class="calculator">
+                <h2>Калькулятор каркаса</h2>
+                <label for="lengthk">Длина каркаса (м):</label>
+                <input type="number" id="lengthk" placeholder="Введите длину">
+                <label for="widthk">Ширина каркаса (м):</label>
+                <input type="number" id="widthk" placeholder="Введите ширину">
+                <label for="heightk">Высота каркаса (м):</label>
+                <input type="number" id="heightk" placeholder="Введите высоту">
+                <label for="materialk">Длина одного элемента (м):</label>
+                <input type="number" id="materialk" placeholder="Длина элемента">
+                <button onclick="calculateFrame()">Рассчитать</button>
+                <div class="result" id="resultk"></div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tabcontent">
+            <div class="calculator">
+                <h2>Калькулятор фундамента</h2>
+                <label for="lengthf">Длина фундамента (м):</label>
+                <input type="number" id="lengthf" placeholder="Введите длину">
+                <label for="widthf">Ширина фундамента (м):</label>
+                <input type="number" id="widthf" placeholder="Введите ширину">
+                <label for="depthf">Глубина фундамента (м):</label>
+                <input type="number" id="depthf" placeholder="Введите глубину">
+                <button onclick="calculateFoundation()">Рассчитать</button>
+                <div class="result" id="resultf"></div>
+            </div>
+        </div>
+
+        <div id="tab3" class="tabcontent">
+            <div class="calculator">
+                <h2>Калькулятор стоимости строительства</h2>
+                <label for="area">Площадь (м²):</label>
+                <input type="number" id="area" placeholder="Введите площадь">
+                <label for="costPerUnit">Стоимость за м² (руб):</label>
+                <input type="number" id="costPerUnit" placeholder="Введите стоимость">
+                <button onclick="calculateCost()">Рассчитать</button>
+                <div class="result" id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Логика переключения вкладок
+        document.querySelectorAll('.tablink').forEach(link => {
+            link.addEventListener('click', function () {
+                const tabName = this.getAttribute('data-tab');
+                document.querySelectorAll('.tabcontent').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.tablink').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.getElementById(tabName).classList.add('active');
+                this.classList.add('active');
+            });
+        });
+
+        // Функция для расчёта каркаса
+        function calculateFrame() {
+            const lengthk = parseFloat(document.getElementById('lengthk').value);
+            const widthk = parseFloat(document.getElementById('widthk').value);
+            const heightk = parseFloat(document.getElementById('heightk').value);
+            const materialk = parseFloat(document.getElementById('materialk').value);
+
+            if (isNaN(lengthk) || isNaN(widthk) || isNaN(heightk) || isNaN(materialk)) {
+                alert("Пожалуйста, заполните все поля!");
+                return;
+            }
+
+            const totalLength = (lengthk + widthk + heightk) * 4;
+            const numberOfMaterials = Math.ceil(totalLength / materialk);
+
+            document.getElementById('resultk').innerHTML = `
+                Общая длина каркаса: ${totalLength.toFixed(2)} м<br>
+                Необходимо элементов: ${numberOfMaterials} шт
+            `;
+        }
+
+        // Функция для расчёта фундамента
+        function calculateFoundation() {
+            const lengthf = parseFloat(document.getElementById('lengthf').value);
+            const widthf = parseFloat(document.getElementById('widthf').value);
+            const depthf = parseFloat(document.getElementById('depthf').value);
+
+            if (isNaN(lengthf) || isNaN(widthf) || isNaN(depthf)) {
+                alert("Пожалуйста, заполните все поля!");
+                return;
+            }
+
+            const volume = lengthf * widthf * depthf;
+
+            document.getElementById('resultf').innerHTML = `
+                Объём бетона: ${volume.toFixed(2)} м³
+            `;
+        }
+
+        // Функция для расчёта стоимости
+        function calculateCost() {
+            const area = parseFloat(document.getElementById('area').value);
+            const costPerUnit = parseFloat(document.getElementById('costPerUnit').value);
+
+            if (isNaN(area) || isNaN(costPerUnit)) {
+                alert("Пожалуйста, заполните все поля!");
+                return;
+            }
+
+            const totalCost = area * costPerUnit;
+
+            document.getElementById('result').innerHTML = `
+                Общая стоимость: ${totalCost.toFixed(2)} руб
+            `;
+        }
+    </script>
+</body>
+</html>

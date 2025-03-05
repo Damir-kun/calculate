@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расчёт каркаса</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Введите данные для расчёта каркаса</h2>
+        <form id="calculation-form">
+            <label for="length">Длина (м):</label>
+            <input type="number" id="length" name="length" step="0.01" required>
+            <br>
+            <label for="width">Ширина (м):</label>
+            <input type="number" id="width" name="width" step="0.01" required>
+            <br>
+            <label for="height">Высота (м):</label>
+            <input type="number" id="height" name="height" step="0.01" required>
+            <br>
+            <label for="material">Материал:</label>
+            <select id="material" name="material" required>
+                <option value="steel">Сталь</option>
+                <option value="aluminum">Алюминий</option>
+                <option value="wood">Дерево</option>
+            </select>
+            <br>
+            <label for="frame-type">Тип каркаса:</label>
+            <select id="frame-type" name="frame-type" required>
+                <option value="single">Одинарный</option>
+                <option value="double">Двойной</option>
+                <option value="triple">Тройной</option>
+            </select>
+
+            <input type="submit" value="Рассчитать">
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
