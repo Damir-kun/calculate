@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .login-container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background: #2575fc;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background: #6a11cb;
+        }
+
+        .login-container .links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .login-container .links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .login-container .links a:hover {
+            color: #2575fc;
+        }
+
+        .login-container .social-login {
+            margin-top: 20px;
+        }
+
+        .login-container .social-login button {
+            width: 48%;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-container .social-login button.google {
+            background: #db4437;
+            color: #fff;
+        }
+
+        .login-container .social-login button.facebook {
+            background: #4267B2;
+            color: #fff;
+        }
+
+        .login-container .social-login button:hover {
+            opacity: 0.9;
+        }
+    </style>
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Авторизация</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+    
+            .auth-container {
+                background: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                width: 300px;
+                text-align: center;
+            }
+    
+            h1 {
+                margin-bottom: 20px;
+                font-size: 24px;
+                color: #333;
+            }
+    
+            label {
+                display: block;
+                margin: 10px 0 5px;
+                font-weight: bold;
+                color: #555;
+            }
+    
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+    
+            button {
+                width: 100%;
+                padding: 10px;
+                background-color: #1abc9c;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+    
+            button:hover {
+                background-color: #16a085;
+            }
+    
+            .message {
+                margin-top: 20px;
+                font-size: 16px;
+                color: #333;
+            }
+    
+            .error {
+                color: red;
+            }
+    
+            .success {
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="auth-container">
+            <h1>Авторизация</h1>
+            <form id="authForm">
+                <label for="login">Логин:</label>
+                <input type="text" id="login" name="login" placeholder="Введите логин" required>
+    
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+    
+                <button type="submit">Войти</button>
+            </form>
+            <div class="message" id="message"></div>
+        </div>
+    
+        <script>
+            // Обработка отправки формы
+            document.getElementById('authForm').addEventListener('submit', async function (e) {
+                e.preventDefault(); // Отменяем стандартное поведение формы
+    
+                const login = document.getElementById('login').value;
+                const password = document.getElementById('password').value;
+    
+                // Отправляем данные на сервер
+                try {
+                    const response = await fetch('https://example.com/api/auth', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            login: login,
+                            password: password,
+                        }),
+                    });
+    
+                    const data = await response.json();
+    
+                    if (response.ok) {
+                        // Успешная авторизация
+                        document.getElementById('message').innerHTML = `
+                            <p class="success">Авторизация успешна!</p>
+                            <p>Токен: ${data.token}</p>
+                        `;
+                        // Сохраняем токен в localStorage
+                        localStorage.setItem('authToken', data.token);
+                    } else {
+                        // Ошибка авторизации
+                        document.getElementById('message').innerHTML = `
+                            <p class="error">Ошибка: ${data.message}</p>
+                        `;
+                    }
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    document.getElementById('message').innerHTML = `
+                        <p class="error">Произошла ошибка при отправке запроса.</p>
+                    `;
+                }
+            });
+    
+            // Проверка наличия токена при загрузке страницы
+            window.addEventListener('load', function () {
+                const token = localStorage.getItem('authToken');
+                if (token) {
+                    document.getElementById('message').innerHTML = `
+                        <p class="success">Вы уже авторизованы. Токен: ${token}</p>
+                    `;
+                }
+            });
+        </script>
+    </body>
+    </html>
